@@ -30,12 +30,12 @@ class Agent:
         sum = 0
         postProb= [0]*3
         for i in range(3):  # i is index for working tap number
-            pos = DiffusionOfInnovations.likelihoods[tapChosen][i]
-            postProb[i] = network.agents[x].priors[i] * pos
+            pos = self.likelihoods[self.choice][i]
+            postProb[i] = self.priors[i] * pos
             sum += postProb[i]
         alpha = 1 / sum
         for j in range(3):
-            network.agents[x].priors[j] = postProb[j]*alpha
+            self.priors[j] = postProb[j]*alpha
 
     def reset(self):
         self.priors = [1 / 3] * 3
